@@ -1,0 +1,16 @@
+<h1>Mes produits</h1>
+
+@if (loading()) {
+  <p>Chargement</p>
+} @else {
+  @if (products().length === 0) {
+    <p>Aucun produit trouver</p>
+  } @else {
+    @for (product of products(); track product.id) {
+      <div>
+        <p>{{ product.name }}</p>
+        <p>-{{ product.price }}</p>
+      </div>
+    }
+  }
+}

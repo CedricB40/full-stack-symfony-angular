@@ -1,0 +1,46 @@
+<h1 class="list-title">Utilisateur</h1>
+
+<div id="list" class="user-list">
+  @if (loading()) {
+    <p>Chargement ... </p>
+  } @else {
+    @if (users().length === 0) {
+      <p id="empty">Aucun utilisateur inscrit</p>
+    } @else {
+      @for (user of users(); track user.id) {
+        <div class="user-card">
+          <div class="user-info">
+            <strong>{{ user.name }}</strong>
+            <span>{{ user.email }}</span>
+            <small>{{ user.registeredAt }}</small>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn-edit" (click)="startEdit(user)">Modifier</button>
+            <button type="button" class="btn-delete" (click)="deleteUser(user.id!)">Supprimer</button>
+          </div>
+        </div>
+      }
+    }
+  }
+</div>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+  <div class="form-row">
+    <input formControlName="name" placeholder="Nom" />
+    <input formControlName="email" placeholder="Email" />
+
+    <button type="submit" class="btn-submit" [disabled]="userForm.invalid">
+      {{ editingUser() ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+    @if (editingUser()) {
+      <button type="button" class="btn-cancel" (click)="cancelEdit()">Annuler</button>
+    }
+  </div>
+
+  @if (userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+    <p>Le nom est requis</p>
+  }
+  @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+    <p>Email invalide</p>
+  }
+</form>
