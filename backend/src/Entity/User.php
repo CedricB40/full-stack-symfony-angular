@@ -26,6 +26,11 @@ class User
     #[ORM\Column]
     private ?\DateTimeImmutable $registeredAt = null;
 
+    public function __construct()
+    {
+        $this->registeredAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
