@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 02 sep. 2026 à 07:22
+-- Généré le : lun. 07 sep. 2026 à 07:25
 -- Version du serveur : 8.4.7
--- Version de PHP : 8.5.9
+-- Version de PHP : 8.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `doctrine_migration_versions`;
 CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
   `execution_time` int DEFAULT NULL,
   PRIMARY KEY (`version`)
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) NOT NULL,
   `registered_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
@@ -83,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `registered_at`) VALUES
 (1, 'ismail', 'ismaildimah@gmail.com', '2026-09-01 06:10:23'),
 (2, 'ceyhun', 'ceyhun@cfitech.be', '2026-09-01 06:21:07'),
-(3, 'Cedric', 'cedric@gmail.com', '2026-09-01 07:43:19');
+(3, 'Cedric', 'cedric@gmail.com', '2026-09-01 07:43:19'),
+(4, 'test', 'test@test.test', '2026-09-02 18:55:06');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
